@@ -38,6 +38,26 @@ make down
 
 `make down` (or `docker compose down`) stops all five services and retains database and uploaded-image volumes. Compose uses the fixed project name `diploma-project`, so these commands keep targeting the same containers and data after the checkout directory is renamed. Seeding is explicit and additive: it never resets existing accounts or prices. It creates 6 brands, 12 models, 240 sale listings, 48 rental listings, example price histories, and past/upcoming bookings. Baselines and listings are **synthetic**.
 
+## Windows: one-command launch
+
+Install and start Docker Desktop with **Linux containers** enabled and Docker Compose v2.20 or newer. Then open PowerShell in the project folder and run:
+
+```powershell
+.\start.cmd
+```
+
+Python, Make, and a local virtual environment are not required. The launcher creates `.env` with random secrets if missing, builds the containers, waits for PostgreSQL/Redis, applies migrations, seeds the local photos and demo data, starts all five services, and opens <http://localhost:8000> after the API health check passes. Existing `.env`, accounts, listings, and custom uploads are preserved. The first run needs internet access to download container images and Python dependencies; bundled car photos need no downloads. Repeat the same command on later runs.
+
+Stop everything while retaining the database and uploaded images:
+
+```powershell
+.\stop.cmd
+```
+
+From Command Prompt, use `start.cmd` and `stop.cmd`. Both commands locate the project using their own file path, so they also work when invoked from another directory or a path containing spaces. Use `.\start.cmd -NoBrowser` to skip opening a browser. Scripts return a nonzero exit code if Docker, a migration, or another startup step fails; inspect `docker compose logs --tail 80` for container details. If startup fails after some services have started, `.\stop.cmd` stops them. Keep Docker Desktop running until shutdown completes.
+
+Docker Desktop and a separate WSL Docker Engine have separate data stores. A fresh Windows Docker installation seeds its own demo; moving existing accounts or uploaded files between engines requires transferring their Docker volumes.
+
 ## Business rules
 
 ### Car images and publishing
