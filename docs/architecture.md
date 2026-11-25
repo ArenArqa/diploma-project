@@ -70,7 +70,7 @@ Market recalculation uses REPEATABLE READ, a transaction advisory lock, and one 
 Generated from project source; environment files, dependency caches, bytecode, and Git internals are omitted.
 
 ```text
-coursework/
+diploma-project/
 ├── .github/
 │   └── workflows/
 │       └── ci.yml

@@ -36,7 +36,7 @@ docker compose exec api python -m scripts.create_admin your-email@example.com --
 make down
 ```
 
-`make down` retains database volumes. Seeding is explicit and additive: it never resets existing accounts or prices. It creates 6 brands, 12 models, 240 sale listings, 48 rental listings, example price histories, and past/upcoming bookings. Baselines and listings are **synthetic**.
+`make down` (or `docker compose down`) stops all five services and retains database and uploaded-image volumes. Compose uses the fixed project name `diploma-project`, so these commands keep targeting the same containers and data after the checkout directory is renamed. Seeding is explicit and additive: it never resets existing accounts or prices. It creates 6 brands, 12 models, 240 sale listings, 48 rental listings, example price histories, and past/upcoming bookings. Baselines and listings are **synthetic**.
 
 ## Business rules
 
