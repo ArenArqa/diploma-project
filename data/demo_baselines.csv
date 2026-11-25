@@ -1,0 +1,13 @@
+brand,brand_slug,model,model_slug,base_price_amd
+Toyota,toyota,Corolla,corolla,11500000
+Toyota,toyota,Camry,camry,17500000
+BMW,bmw,3 Series,3-series,22500000
+BMW,bmw,X5,x5,36000000
+Mercedes-Benz,mercedes-benz,C-Class,c-class,24000000
+Mercedes-Benz,mercedes-benz,E-Class,e-class,32000000
+Hyundai,hyundai,Elantra,elantra,10500000
+Hyundai,hyundai,Tucson,tucson,15000000
+Kia,kia,K5,k5,13500000
+Kia,kia,Sportage,sportage,14500000
+Nissan,nissan,Sentra,sentra,10000000
+Nissan,nissan,Rogue,rogue,15000000

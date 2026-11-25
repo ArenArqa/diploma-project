@@ -1,0 +1,290 @@
+[
+  {
+    "brand_slug": "toyota",
+    "model_slug": "corolla",
+    "photos": [
+      {
+        "commons_filename": "2020 Toyota Corolla SE, front 2.29.20.jpg",
+        "author": "Kevauto",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "commons_filename": "2010 Toyota Corolla, front left, 10-17-2026.jpg",
+        "author": "BuickRiviera99",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "commons_filename": "2005 Toyota Corolla, rear 5.18.19.jpg",
+        "author": "Kevauto",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      }
+    ]
+  },
+  {
+    "brand_slug": "toyota",
+    "model_slug": "camry",
+    "photos": [
+      {
+        "commons_filename": "Toyota Camry front (October 28, 2024).jpg",
+        "author": "メイド理世",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "commons_filename": "2020 Toyota Camry 2.5 (Front view).jpg",
+        "author": "AIMHO'S REBELLION 8490s",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "commons_filename": "2024 Toyota Camry HEV Premium Luxury (Rear).jpg",
+        "author": "Chanokchon",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      }
+    ]
+  },
+  {
+    "brand_slug": "bmw",
+    "model_slug": "3-series",
+    "photos": [
+      {
+        "commons_filename": "BMW 3 Series 4.jpg",
+        "author": "Calreyn88",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "commons_filename": "BMW 320i (F30) front.JPG",
+        "author": "Tokumeigakarinoaoshima",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "commons_filename": "White BMW 320i Gran Turismo F34 in Ap Lei Chau (Rear).jpg",
+        "author": "Corsadent56709",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      }
+    ]
+  },
+  {
+    "brand_slug": "bmw",
+    "model_slug": "x5",
+    "photos": [
+      {
+        "commons_filename": "2002 BMW X5 Sport Automatic 4.4 Front.jpg",
+        "author": "Vauxford",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "commons_filename": "2020 BMW X5 G05 xDrive30d M Sport, front right, 06-30-2024.jpg",
+        "author": "Ethan Llamas",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "commons_filename": "2020 BMW X5 G05 xDrive30d M Sport, rear left, 06-30-2024.jpg",
+        "author": "Ethan Llamas",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      }
+    ]
+  },
+  {
+    "brand_slug": "mercedes-benz",
+    "model_slug": "c-class",
+    "photos": [
+      {
+        "commons_filename": "Mercedes C Class.jpg",
+        "author": "Calreyn88",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "commons_filename": "2025 Mercedes-Benz C-Class - 01.jpg",
+        "author": "Oleg Yunakov",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "commons_filename": "2006 Mercedes-Benz C220 CDi SE Automatic 2.1 Rear.jpg",
+        "author": "Vauxford",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      }
+    ]
+  },
+  {
+    "brand_slug": "mercedes-benz",
+    "model_slug": "e-class",
+    "photos": [
+      {
+        "commons_filename": "2023 Mercedes E Class.jpg",
+        "author": "Calreyn88",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "commons_filename": "Mercedes w213 elegance black.jpg",
+        "author": "Damian B Oh",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "commons_filename": "2020-09-22 MB-E200 W213-more-rear MOPF.jpg",
+        "author": "Wikisympathisant",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      }
+    ]
+  },
+  {
+    "brand_slug": "hyundai",
+    "model_slug": "elantra",
+    "photos": [
+      {
+        "commons_filename": "2024 Hyundai Elantra (facelift), front 2.2.24.jpg",
+        "author": "Kevauto",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "commons_filename": "2021 Hyundai Elantra Front View (United States).jpg",
+        "author": "Gold Pony",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "commons_filename": "2020 Hyundai Elantra Rear.jpg",
+        "author": "Damian B Oh",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      }
+    ]
+  },
+  {
+    "brand_slug": "hyundai",
+    "model_slug": "tucson",
+    "photos": [
+      {
+        "commons_filename": "Hyundai Tucson facelift (front).jpg",
+        "author": "JustAnotherCarDesigner",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "commons_filename": "20180907 Hyundai Tucson Front-Side.png",
+        "author": "Ki hoon",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "commons_filename": "2024 Hyundai Tucson Limited, rear 12.10.24.jpg",
+        "author": "Kevauto",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      }
+    ]
+  },
+  {
+    "brand_slug": "kia",
+    "model_slug": "k5",
+    "photos": [
+      {
+        "commons_filename": "20191227 K5 Front Side.png",
+        "author": "Ki hoon",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "commons_filename": "Kia K5 1.6T DL3 Yacht Blue (1).jpg",
+        "author": "Damian B Oh",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "commons_filename": "2021 Kia K5 GT-Line, rear left, 09-09-2023.jpg",
+        "author": "MercurySable99",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      }
+    ]
+  },
+  {
+    "brand_slug": "kia",
+    "model_slug": "sportage",
+    "photos": [
+      {
+        "commons_filename": "Kia Sportage (QL) Front.jpg",
+        "author": "Milhouse35",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "commons_filename": "Kia Sportage (NQ5) in White, front left.jpg",
+        "author": "Benespit",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "commons_filename": "2006 Kia Sportage LX in Volcanic Red, Rear Right, 07-19-2022.jpg",
+        "author": "Elise240SX",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      }
+    ]
+  },
+  {
+    "brand_slug": "nissan",
+    "model_slug": "sentra",
+    "photos": [
+      {
+        "commons_filename": "2021 Nissan Sentra S, front 5.20.22.jpg",
+        "author": "Kevauto",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "commons_filename": "2016 Nissan Sentra SV 1.8L, 12.28.19.jpg",
+        "author": "Ghostofakina",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "commons_filename": "2017 Nissan Sentra SV rear 4.18.19.jpg",
+        "author": "Kevauto",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      }
+    ]
+  },
+  {
+    "brand_slug": "nissan",
+    "model_slug": "rogue",
+    "photos": [
+      {
+        "commons_filename": "2016 Nissan Rogue, Front Left.jpg",
+        "author": "SsmIntrigue",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "commons_filename": "2021 Nissan Rogue.jpg",
+        "author": "Wagon Master Johnson",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      {
+        "commons_filename": "2018 Nissan Rogue SL AWD, rear left, 10-24-2026.jpg",
+        "author": "BuickRiviera99",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      }
+    ]
+  }
+]

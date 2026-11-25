@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AutoMetric · Smart car marketplace</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>window.tailwind = window.tailwind || {};
+    window.tailwind.config = {corePlugins: {preflight: false}};</script>
+  <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="AutoMetric home"><span class="brand-icon">A<span>↗</span></span>AutoMetric<span class="brand-dot">.</span></a>
+    <nav aria-label="Main navigation">
+      <button class="nav-link active" data-tab="catalog">Marketplace</button>
+      <button class="nav-link" data-tab="valuation">Car valuation</button>
+      <button class="nav-link" data-tab="rental">Rentals</button>
+      <button class="nav-link" data-tab="insights">Insights</button>
+    </nav>
+    <div class="account"><span id="account-name"></span><button id="login-open" class="button small">Sign in <span>↗</span></button><button id="logout" class="button secondary small" hidden>Sign out</button></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div><p class="eyebrow"><span class="live-dot"></span> ARMENIA · SMARTER CAR DECISIONS</p><h1>Your next move,<br><span>backed by numbers.</span></h1><p class="hero-copy">Find the right car. Understand its value.<br>Book your next journey with confidence.</p></div>
+      <aside class="hero-note"><span class="note-symbol">↗</span><p>Less guesswork.<br>More open roads.</p><small>AMD prices · Transparent calculations</small></aside>
+    </section>
+
+    <section id="catalog" class="tab-panel">
+      <div class="section-heading"><div><p class="eyebrow">THE MARKETPLACE</p><h2>A good place to start.</h2></div><div class="catalog-actions"><span class="tag">Sale & rental listings</span><button id="publish-open" class="button">List a car ↗</button></div></div>
+      <form id="search-form" class="filter-panel">
+        <label>Listing type<select name="listing_type"><option value="sale">For sale</option><option value="rent">For rent</option></select></label>
+        <label>Brand<select name="brand_id" id="search-brand"><option value="">All brands</option></select></label>
+        <label>Model<select name="model_id" id="search-model"><option value="">All models</option></select></label>
+        <label>Year from<input name="year_min" type="number" min="1900" placeholder="Any"></label>
+        <label>Year to<input name="year_max" type="number" min="1900" placeholder="Any"></label>
+        <label>Price from · AMD<input name="price_min" type="number" min="1" step="1" placeholder="No minimum"></label>
+        <label>Price to · AMD<input name="price_max" type="number" min="1" step="1" placeholder="No maximum"></label>
+        <label>Max mileage · km<input name="mileage_max" type="number" min="0" placeholder="Any mileage"></label>
+        <label>Fuel<select name="fuel_type"><option value="">All fuel types</option><option value="gasoline">Gasoline</option><option value="diesel">Diesel</option><option value="hybrid">Hybrid</option><option value="electric">Electric</option><option value="lpg">LPG</option></select></label>
+        <label>Sort by<select name="sort"><option value="newest">Newest first</option><option value="price_asc">Price: low to high</option><option value="price_desc">Price: high to low</option><option value="year_desc">Year: newest first</option><option value="mileage_asc">Mileage: lowest first</option></select></label>
+        <button class="button" type="submit">Find your car <span>↗</span></button><button class="text-button" type="reset">Reset filters</button>
+      </form>
+      <div class="results-heading"><p id="results-count" aria-live="polite">Loading the marketplace…</p><span class="muted">All prices in Armenian dram</span></div>
+      <div id="listing-grid" class="listing-grid"></div>
+      <div class="pagination"><button class="button secondary" id="previous-page">← Previous</button><span id="page-label"></span><button class="button secondary" id="next-page">Next →</button></div>
+    </section>
+
+    <section id="valuation" class="tab-panel" hidden>
+      <div class="section-heading"><div><p class="eyebrow">THE VALUATION LAB</p><h2>Know what it’s worth.</h2></div><span class="tag">Explainable by design</span></div>
+      <div class="two-column"><form id="valuation-form" class="panel stack">
+        <h3>Tell us about the car</h3>
+        <label>Model<select id="valuation-model" name="model_id" required></select></label>
+        <div class="field-row"><label>Production year<input name="year" id="valuation-year" type="number" min="1900" required></label><label>Mileage · km<input name="mileage_km" type="number" min="0" value="75000" required></label></div>
+        <label>Condition<select name="condition"><option value="good">Good</option><option value="excellent">Excellent</option><option value="fair">Fair</option><option value="poor">Poor</option></select></label>
+        <button class="button" type="submit">Calculate market value <span>↗</span></button>
+        <p class="muted">An explainable diploma demonstration using synthetic baselines and asking prices. The range is heuristic.</p>
+      </form><div id="valuation-result" class="panel result-panel"><span class="large-symbol">≈</span><h3>A clearer picture of value.</h3><p class="muted">Choose a model and enter its details to see a recommended price and every factor behind it.</p></div></div>
+    </section>
+
+    <section id="rental" class="tab-panel" hidden>
+      <div class="section-heading"><div><p class="eyebrow">PLAN YOUR NEXT JOURNEY</p><h2>Pick your dates. Hit the road.</h2></div><span class="tag">Instant reservations · No payment</span></div>
+      <div class="two-column"><div class="panel stack">
+        <form id="quote-form" class="stack"><label>Rental car<select id="rental-listing" name="listing_id" required></select></label>
+          <div class="calendar-heading"><button id="calendar-prev" type="button" class="icon-button" aria-label="Previous month">←</button><h3 id="calendar-month"></h3><button id="calendar-next" type="button" class="icon-button" aria-label="Next month">→</button></div>
+          <div class="calendar-week"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div><div id="calendar-days" class="calendar-days" aria-label="Rental date calendar"></div>
+          <p class="muted">Select a start date, then an end date. Both dates are billed. <span class="blocked-key"></span> Unavailable</p>
+          <div class="field-row"><label>Start date<input id="rental-start" name="start_date" type="date" required></label><label>End date<input id="rental-end" name="end_date" type="date" required></label></div>
+          <button class="button" type="submit">Get a price quote <span>↗</span></button>
+        </form>
+      </div><div id="quote-result" class="panel result-panel"><span class="large-symbol">↗</span><h3>Your journey, priced clearly.</h3><p class="muted">See seasonal rates, demand adjustment, and progressive long-stay discounts before you book.</p></div></div>
+      <div class="section-heading"><h3>Your reservations</h3><button id="refresh-bookings" class="text-button">Refresh ↻</button></div><div id="my-bookings" class="stack"><p class="muted">Sign in to see your reservations.</p></div>
+    </section>
+
+    <section id="insights" class="tab-panel" hidden>
+      <div class="section-heading"><div><p class="eyebrow">A VIEW OF THE MARKET</p><h2>Turn activity into insight.</h2></div><span class="tag">Dealer & admin workspace</span></div>
+      <p id="insights-access" class="muted">Sign in with a dealer or admin account to view analytics.</p>
+      <div id="inventory-summary" class="metric-grid"></div>
+      <form id="insights-form" class="panel inline-form"><label>Model<select id="insights-model" name="model_id" required></select></label><label>Market<select name="listing_type"><option value="sale">Sale</option><option value="rent">Rental</option></select></label><button class="button">View market statistics ↗</button></form>
+      <div id="market-result" class="panel" hidden></div>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="/">AutoMetric.</a><p>Built for better decisions. A university diploma demonstration.</p><a href="/static/image-credits.html">Image credits</a><a href="/docs">Explore the API ↗</a></footer>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+  <dialog id="auth-dialog"><button class="dialog-close icon-button" data-close="auth-dialog" aria-label="Close">×</button><p class="eyebrow">WELCOME TO AUTOMETRIC</p><h2>Make your next move.</h2><form id="auth-form" class="stack"><label id="register-name-label" hidden>Full name<input name="full_name" maxlength="100" autocomplete="name"></label><label>Email<input name="email" type="email" autocomplete="username" required></label><label>Password<input name="password" type="password" minlength="12" maxlength="128" autocomplete="current-password" required></label><button class="button" id="auth-submit">Sign in ↗</button><button type="button" class="text-button" id="auth-toggle">New here? Create an account</button><p class="muted" id="auth-note">Demo accounts and setup instructions are in the README.</p></form></dialog>
+  <dialog id="listing-dialog"><button class="dialog-close icon-button" data-close="listing-dialog" aria-label="Close">×</button><div id="listing-detail"></div></dialog>
+
+  <dialog id="publish-dialog" aria-labelledby="publish-heading">
+    <button class="dialog-close icon-button" data-close="publish-dialog" aria-label="Close">×</button>
+    <p class="eyebrow">YOUR CAR, ITS NEXT CHAPTER</p><h2 id="publish-heading">List a car.</h2>
+    <form id="publish-form" class="stack">
+      <fieldset id="vehicle-fields" class="stack">
+        <label>Model<select name="model_id" id="publish-model" required></select></label>
+        <label>VIN<input name="vin" minlength="17" maxlength="17" pattern="[A-HJ-NPR-Z0-9]{17}" placeholder="17 uppercase letters and digits" required></label>
+        <div class="field-row"><label>Year<input name="year" id="publish-year" type="number" min="1900" required></label><label>Mileage · km<input name="mileage_km" type="number" min="0" required></label></div>
+        <div class="field-row"><label>Fuel<select name="fuel_type"><option value="gasoline">Gasoline</option><option value="diesel">Diesel</option><option value="hybrid">Hybrid</option><option value="electric">Electric</option><option value="lpg">LPG</option></select></label><label>Transmission<select name="transmission"><option value="automatic">Automatic</option><option value="manual">Manual</option></select></label></div>
+        <label>Condition<select name="condition"><option value="good">Good</option><option value="excellent">Excellent</option><option value="fair">Fair</option><option value="poor">Poor</option></select></label>
+      </fieldset>
+      <label>Car image · optional<input id="publish-image" type="file" accept="image/jpeg,image/png,image/webp"><span class="muted">JPG, PNG, or WebP · up to 5 MB</span></label>
+      <img id="publish-preview" class="upload-preview" alt="Selected car image preview" hidden>
+      <label>Listing type<select name="listing_type" id="publish-type"><option value="sale">For sale</option><option value="rent">For rent · dealers</option></select></label>
+      <label>Title<input name="title" maxlength="150" required></label>
+      <div class="field-row"><label>City<input name="city" value="Yerevan" maxlength="100" required></label><label>Price · AMD (daily base for rent)<input name="price_amd" type="number" min="1" step="1" required></label></div>
+      <label>Description<textarea name="description" rows="3" maxlength="5000"></textarea></label>
+      <p id="publish-status" class="muted" role="status"></p>
+      <button class="button" type="submit">Publish listing ↗</button>
+    </form>
+  </dialog>
+  <script type="module" src="/static/js/publish.js"></script>
+  <script type="module" src="/static/js/api.js"></script>
+  <script type="module" src="/static/js/auth.js"></script>
+  <script type="module" src="/static/js/catalog.js"></script>
+  <script type="module" src="/static/js/valuation.js"></script>
+  <script type="module" src="/static/js/booking.js"></script>
+  <script type="module" src="/static/js/insights.js"></script>
+</body>
+</html>

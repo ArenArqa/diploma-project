@@ -1,0 +1,9 @@
+import {api,references,on,esc,amd,businessToday,handleError} from './api.js';
+import {modelOptions} from './catalog.js';
+references.then(({models,brands}) => document.querySelector('#valuation-model').innerHTML = modelOptions(models,brands,false)).catch(handleError);
+const year = document.querySelector('#valuation-year'); year.value = Number(businessToday().slice(0,4))-5; year.max = Number(businessToday().slice(0,4))+1;
+on('#valuation-form','submit', async e => {
+  e.preventDefault(); const data = Object.fromEntries(new FormData(e.target)); data.year=Number(data.year); data.mileage_km=Number(data.mileage_km);
+  const result = await api('/valuations/sale',{method:'POST',body:data}); const f = result.factors;
+  document.querySelector('#valuation-result').innerHTML = `<p class="eyebrow">RECOMMENDED ASKING PRICE</p><div class="result-price">${amd(result.recommended_price)}</div><div><div class="range-bar"></div><div class="range-labels"><span>${amd(result.min_price)}</span><span>Heuristic range</span><span>${amd(result.max_price)}</span></div></div><div class="factor-list"><span>New-equivalent baseline</span><strong>${amd(f.baseline_price_amd)}</strong><span>Age depreciation</span><strong>× ${Number(f.age_multiplier).toFixed(3)}</strong><span>Mileage adjustment</span><strong>× ${Number(f.mileage_multiplier).toFixed(3)}</strong><span>Condition</span><strong>× ${Number(f.condition_multiplier).toFixed(2)}</strong><span>Market adjustment</span><strong>× ${Number(f.market_multiplier).toFixed(3)}</strong></div><p class="muted">${result.comparable_count} comparables · Statistics: ${esc(result.snapshot_status)} · ${esc(result.algorithm_version)}</p><p class="badge-note">Synthetic demonstration data. This range is heuristic and does not claim measured accuracy for Armenia’s real market.</p>`;
+});
