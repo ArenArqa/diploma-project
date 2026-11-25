@@ -1,9 +1,10 @@
 [CmdletBinding()]
 param(
     [Parameter(Position = 0)]
-    [ValidateSet("start", "stop")]
+    [ValidateSet("start", "stop", "clean-docker", "clean-builder", "delete-volumes")]
     [string]$Action = "start",
-    [switch]$NoBrowser
+    [switch]$NoBrowser,
+    [switch]$ConfirmDelete
 )
 
 $ErrorActionPreference = "Stop"
@@ -58,6 +59,10 @@ function Initialize-Environment {
 
 Push-Location -LiteralPath $projectRoot
 try {
+    if ($Action -eq "delete-volumes" -and -not $ConfirmDelete) {
+        throw ("This stops the project and permanently deletes its database, Redis data, and " +
+            "uploaded images. To proceed, run: .\delete-volumes.cmd -ConfirmDelete")
+    }
     if (-not (Get-Command docker -ErrorAction SilentlyContinue)) {
         throw "Docker was not found. Install Docker Desktop, then reopen your terminal."
     }
@@ -73,11 +78,25 @@ try {
     if (($engineType -join '').Trim() -ne "linux") {
         throw "This project needs Linux containers. Switch Docker Desktop to Linux containers."
     }
-    Invoke-Docker -DockerArguments @("compose", "version")
+    if ($Action -in @("start", "stop", "delete-volumes")) {
+        Invoke-Docker -DockerArguments @("compose", "version")
+    }
 
     if ($Action -eq "stop") {
         Invoke-Docker -DockerArguments @("compose", "down")
         Write-Host "diploma-project stopped. Database and uploaded images are preserved."
+    }
+    elseif ($Action -eq "clean-docker") {
+        Write-Host "Remove unused Docker resources across ALL projects; volumes are preserved."
+        Invoke-Docker -DockerArguments @("system", "prune", "--all")
+    }
+    elseif ($Action -eq "clean-builder") {
+        Write-Host "Remove unused default-builder cache across ALL projects; volumes are preserved."
+        Invoke-Docker -DockerArguments @("builder", "prune", "--all")
+    }
+    elseif ($Action -eq "delete-volumes") {
+        Invoke-Docker -DockerArguments @("compose", "down", "--volumes")
+        Write-Host "Project containers and volumes removed. Run .\start.cmd to create a fresh demo."
     }
     else {
         Initialize-Environment

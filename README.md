@@ -58,6 +58,67 @@ From Command Prompt, use `start.cmd` and `stop.cmd`. Both commands locate the pr
 
 Docker Desktop and a separate WSL Docker Engine have separate data stores. A fresh Windows Docker installation seeds its own demo; moving existing accounts or uploaded files between engines requires transferring their Docker volumes.
 
+## Docker cleanup and deleting project data
+
+Run Make commands from the project folder on Linux/WSL, or the matching `.cmd` scripts from Windows PowerShell. Docker Engine / Docker Desktop must be running. All commands use the Docker engine selected by your current Docker context (`docker context show`).
+
+| Purpose | Make (Linux/WSL) | Windows PowerShell | What it does |
+|---|---|---|---|
+| Normal shutdown | `make down` | `.\stop.cmd` | Stops/removes project containers and its network; retains database, Redis, and uploaded-image volumes. |
+| General Docker cleanup | `make clean-docker` | `.\clean-docker.cmd` | Runs `docker system prune --all`: removes stopped containers, unused networks, images unused by containers, and unused build cache across **all projects on this Docker engine**. Keeps volumes and running containers. Docker asks for confirmation. |
+| Builder cache cleanup only | `make clean-builder` | `.\clean-builder.cmd` | Runs `docker builder prune --all`: removes unused cache from the engine's default builder across **all projects**. Keeps containers, images, networks, and volumes. Docker asks for confirmation. |
+| Delete this project's persistent data | `make delete-volumes CONFIRM=DELETE` | `.\delete-volumes.cmd -ConfirmDelete` | Runs `docker compose down --volumes`: stops/removes project containers and its network, and permanently deletes the project's named volumes plus any anonymous volumes attached to its containers. Keeps Docker images and build cache. |
+
+### Free disk space while keeping project data
+
+Use builder cleanup to reclaim intermediate build layers without removing images or containers. Use general cleanup for a broader disk cleanup; it also reclaims unused builder cache, so running both is usually unnecessary. General cleanup can remove stopped containers and unused images belonging to your other projects. Neither cleanup command passes `--volumes` or silently accepts Docker's confirmation prompt. Answer `n` to cancel.
+
+```sh
+make clean-builder
+# Or, for broader cleanup:
+make clean-docker
+```
+
+Windows equivalents:
+
+```powershell
+.\clean-builder.cmd
+# Or, for broader cleanup:
+.\clean-docker.cmd
+```
+
+Later builds may take longer after cache cleanup. General cleanup may remove the images needed for an offline demo, so a later startup may need internet access to download/rebuild them. These commands use the engine's default builder; independently created Buildx builders have separate caches. Check disk use before and after with `docker system df`.
+
+### Permanently reset the demo
+
+**Volume deletion erases stored data.** The current Compose configuration removes these three named volumes by default:
+
+| Volume | Data lost |
+|---|---|
+| `diploma-project_postgres_data` | All database records: users, cars, listings, bookings, price history, and analytics. |
+| `diploma-project_redis_data` | Redis search caches, queued Celery jobs, and other Redis state. |
+| `diploma-project_car_images` | Uploaded car images and copies of the bundled demo photos stored in Docker. |
+
+Volume deletion requires the explicit confirmation shown below; without `CONFIRM=DELETE` / `-ConfirmDelete`, the command exits without deleting anything. It targets this Compose project, not every Docker volume. Unrelated project volumes and legacy backup volumes are untouched. If you override `COMPOSE_PROJECT_NAME`, the command targets that overridden project. Source files, `.env`, and the bundled photos under `frontend/uploads/cars/` remain on your computer.
+
+Linux/WSL:
+
+```sh
+make delete-volumes CONFIRM=DELETE
+make bootstrap
+```
+
+Windows PowerShell:
+
+```powershell
+.\delete-volumes.cmd -ConfirmDelete
+.\start.cmd
+```
+
+The second command creates fresh volumes, applies migrations, restores bundled demo photos, and seeds new demo records. It cannot restore your deleted custom accounts, listings, bookings, or uploaded photos. Use `make bootstrap` after a reset; `make up` alone does not apply migrations or seed a fresh database. In Command Prompt, omit the `.\` prefix from the Windows commands.
+
+Docker's command references: [system cleanup](https://docs.docker.com/reference/cli/docker/system/prune/), [builder cleanup](https://docs.docker.com/reference/cli/docker/builder/prune/), and [Compose volume removal](https://docs.docker.com/reference/cli/docker/compose/down/).
+
 ## Business rules
 
 ### Car images and publishing
